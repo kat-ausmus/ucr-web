@@ -55,23 +55,11 @@
         @apply px-5 py-12 xs:p-10 max-w-7xl mx-auto flex flex-col relative z-10;
     }
 
-    .row {
-        @apply mt-20;
+    .ucr-report {
+        @apply flex flex-col gap-5 bg-dark-100 p-4 rounded-2xl shadow-inner shadow-light-100/10;
 
-        & ul {
-            @apply flex flex-row overflow-y-auto gap-5 -mt-10 w-full hide-scrollbar;
-        }
-
-        & ul li {
-            @apply min-w-[230px] flex flex-row items-center;
-        }
-
-        & ul li p {
-            @apply fancy-text mt-[22px] text-nowrap text-amber-100;
-        }
-
-        & ul li img {
-            @apply w-[127px] h-[163px] rounded-lg object-cover -ml-3.5;
+        & h4 {
+            @apply text-white font-bold text-base line-clamp-1;
         }
     }
 
@@ -98,7 +86,7 @@
 }
 
 @utility text-gradient {
-    @apply bg-linear-to-r from-[#D6C7FF] to-[#AB8BFF] bg-clip-text text-transparent;
+    @apply bg-linear-to-r from-[#DCE8DA7F] to-[#97F11CCA] bg-clip-text text-transparent;
 }
 
 @utility fancy-text {

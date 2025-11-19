@@ -1,7 +1,7 @@
-import {useState, useEffect, useRef} from 'react'
-import FlexRow from "./FlexRow.tsx";
-import Spinner from "./Spinner";
-import {UCR_COL_NAMES, type UcrRowDataType} from "../types/ucrResponseType.ts";
+import {useEffect, useState} from 'react'
+import Spinner from "../Spinner.tsx";
+import {type UcrRowDataType} from "../../types/ucrResponseType.ts";
+import FlexCard from "./flex/FlexCard.tsx";
 
 
 const Reports = () => {
@@ -36,39 +36,18 @@ const Reports = () => {
         }
     }
 
-    const count = useRef(0);
     useEffect(() => {
-        console.log(`useEffect called ${++count.current} times`);
         fetchUcrData();
     },[])
 
     return (
-        <div className="flex flex-col gap-4 text-amber-50 border-2 border-amber-50 rounded-lg">
-                <h2 className="flex flex-row justify-center border-b-2"> UCR Data</h2>
-
+        <div className="flex flex-col gap-4 text-amber-50">
                 { isLoading ? (
                     <Spinner />
                 ) : errorMessages ? (
                     <p className="text-red-500">{errorMessages}</p>
                 ) : (
-                    <div className="flex flex-col">
-                        <h4 className="row-view gap-2 border-b-2 pl-4">
-                            { Object.entries(UCR_COL_NAMES).map(([key, value]) => (
-                                <p key={key}>{value}</p>
-                            ))}
-                        </h4>
-
-                        <div className="pl-2">
-                          <ul>
-                            {ucrData.map((row: UcrRowDataType) => (
-                                <li key={row.id}>
-                                    <FlexRow data={row} />
-                                </li>
-                            ))}
-                          </ul>
-                        </div>
-                       <div className="mt-2 border-t-2 pl-2">Total Records: {ucrData.length}</div>
-                    </div>
+                    <FlexCard data={ucrData}/>
                 )}
         </div>
     )
